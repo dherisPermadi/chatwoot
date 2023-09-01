@@ -263,7 +263,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_180936) do
     t.string "imap_login", default: ""
     t.string "imap_password", default: ""
     t.boolean "imap_enable_ssl", default: true
-    t.datetime "imap_inbox_synced_at", precision: nil
+    t.datetime "imap_inbox_synced_at"
     t.boolean "smtp_enabled", default: false
     t.string "smtp_address", default: ""
     t.integer "smtp_port", default: 0
@@ -375,7 +375,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_180936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "message_templates", default: {}
-    t.datetime "message_templates_last_updated", precision: nil
+    t.datetime "message_templates_last_updated"
     t.index ["phone_number"], name: "index_channel_whatsapp_on_phone_number", unique: true
   end
 
@@ -500,7 +500,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_180936) do
     t.text "attribute_description"
     t.jsonb "attribute_values", default: []
     t.index ["account_id"], name: "index_custom_attribute_definitions_on_account_id"
-    t.index ["attribute_key", "attribute_model", "account_id"], name: "attribute_key_model_index", unique: true
+    t.index ["attribute_key", "attribute_model"], name: "attribute_key_model_index", unique: true
   end
 
   create_table "custom_filters", force: :cascade do |t|
@@ -804,8 +804,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_180936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "value_in_business_hours"
-    t.datetime "event_start_time", precision: nil
-    t.datetime "event_end_time", precision: nil
+    t.datetime "event_start_time"
+    t.datetime "event_end_time"
     t.index ["account_id", "name", "created_at"], name: "reporting_events__account_id__name__created_at"
     t.index ["account_id"], name: "index_reporting_events_on_account_id"
     t.index ["conversation_id"], name: "index_reporting_events_on_conversation_id"
@@ -840,9 +840,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_180936) do
     t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
     t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
     t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
     t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
     t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+    t.index ["tagger_type", "tagger_id"], name: "index_taggings_on_tagger_type_and_tagger_id"
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|
