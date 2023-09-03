@@ -3,7 +3,9 @@
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "serve": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "lint": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service lint",
     "eslint": "eslint app/**/*.{js,vue}",
     "eslint:fix": "eslint app/**/*.{js,vue} --fix",
     "pretest": "rimraf .jest-cache",
