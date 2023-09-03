@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
     "eslint": "eslint app/**/*.{js,vue}",
     "eslint:fix": "eslint app/**/*.{js,vue} --fix",
     "pretest": "rimraf .jest-cache",
