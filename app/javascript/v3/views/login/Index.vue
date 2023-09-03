@@ -21,15 +21,6 @@
           useInstallationName($t('LOGIN.TITLE'), globalConfig.installationName)
         }}
       </h2>
-      <p
-        v-if="showSignupLink"
-        class="mt-3 text-center text-sm text-slate-600 dark:text-slate-400"
-      >
-        {{ $t('COMMON.OR') }}
-        <router-link to="auth/signup" class="text-link lowercase">
-          {{ $t('LOGIN.CREATE_NEW_ACCOUNT') }}
-        </router-link>
-      </p>
     </section>
     <section
       class="bg-white shadow sm:mx-auto mt-11 sm:w-full sm:max-w-lg dark:bg-slate-800 p-11 sm:shadow-lg sm:rounded-lg"
@@ -78,6 +69,22 @@
       </div>
       <div v-else class="flex items-center justify-center">
         <spinner color-scheme="primary" size="" />
+      </div>
+      <div
+        v-if="showSignupLink"
+        class="mt-6"
+      >
+        <p class="mb-6 text-center font-weight-bolder text-white">Don't have an account yet?</p>
+        <div>
+          <router-link to="auth/signup"
+            tag="button"
+            class="mb-3 flex items-center w-full justify-center rounded-md bg-woot-300 py-3 px-3 text-base font-medium text-white shadow-sm hover:bg-woot-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-woot-500 cursor-pointer"
+          >
+            <span class="button__content">
+              {{ $t('LOGIN.CREATE_NEW_ACCOUNT') }}
+            </span>
+          </router-link>
+        </div>
       </div>
     </section>
   </main>
